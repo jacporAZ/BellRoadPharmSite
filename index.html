@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bell Road Pharmacy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Banner/Announcement Bar -->
+    <div class="banner">
+        <div class="container">
+            <nav class="nav-top">
+                <ul class="nav-list-top">
+                    <li><a href="#semaglutide">SEMAGLUTIDE</a></li>
+                    <li><a href="#vaccines">GET YOUR VACCINES</a></li>
+                    <li><a href="#refil">REFIL RX</a></li>
+                    <li><a href="#shop">SHOP ONLINE</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Top Toolbar/Header -->
+    <header class="top-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="images/Logo_BellRoadPharmacy.png" alt="Bell Road Pharmacy Logo" class="logo">
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="#home">ABOUT</a></li>
+                        <li><a href="#services">SERVICES</a></li>
+                        <li><a href="#about">COMPOUNDING</a></li>
+                        <li><a href="#contact">RECOURSES</a></li>
+                        <li><a href="#blog">BLOG</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+   
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Full-width image divider -->
+        <section class="image-divider">
+            <img src="images/IMG_4715.jpeg" alt="Pharmacy front" class="divider-image">
+            <div class="divider-overlay">
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Bell Road Pharmacy</h4>
+                    <p>Your trusted healthcare partner since 2003</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li>Prescriptions</li>
+                        <li>Health Screenings</li>
+                        <li>Immunizations</li>
+                        <li>Medication Counseling</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>123 Bell Road<br>
+                    Your City, State 12345<br>
+                    (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bell Road Pharmacy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let lastScrollTop = 0;
+        const header = document.querySelector('.top-header');
+        const banner = document.querySelector('.banner');
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const nav = document.querySelector('.nav');
+        
+        // Mobile menu toggle functionality
+        mobileMenuToggle.addEventListener('click', function() {
+            nav.classList.toggle('nav-open');
+            mobileMenuToggle.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-list a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('nav-open');
+                mobileMenuToggle.classList.remove('active');
+            });
+        });
+        
+        // Hide mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!nav.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+                nav.classList.remove('nav-open');
+                mobileMenuToggle.classList.remove('active');
+            }
+        });
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down - hide both banner and header
+                banner.style.transform = 'translateY(-100%)';
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up - show both banner and header
+                banner.style.transform = 'translateY(0)';
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
