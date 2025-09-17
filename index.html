@@ -16,12 +16,10 @@
                 </div>
                 <nav class="nav">
                     <ul class="nav-list">
-                        <li><a href="#home">ABOUT</a></li>
-                        <li><a href="#services">SERVICES</a></li>
-                        <li><a href="#about">COMPOUNDING</a></li>
-                        <li><a href="#contact">RECOURSES</a></li>
-                        <li><a href="#blog">BLOG</a></li>
-                        <li><a href="#contact">CONTACT</a></li>
+                        <li><a href="https://www.melrosepharmacy.com/about">ABOUT</a></li>
+                        <li><a href="https://www.melrosepharmacy.com/services">SERVICES</a></li>
+                        <li><a href="https://www.melrosepharmacy.com/compounding">COMPOUNDING</a></li>
+                        <li><a href="https://www.melrosepharmacy.com/contact">CONTACT</a></li>
                     </ul>
                 </nav>
                 <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
@@ -44,8 +42,48 @@
         </section>
         <div class="welcome-content">
             <h1>Welcome to Bell Road Pharmacy</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>  
+            <p>We are located at 4025 W. Bell Road, Suite 1A, Phoenix, AZ 85053</p>
+            <p>This is a remote site pharmacy, the facility is under continuous surveilance. Video is recorded and retained</p>
+            <h2>Follow Us Online!</h2>
+        </div>
+        <div class="social-media">
+            <a href="https://www.facebook.com/people/Bell-Road-Pharmacy/61580469364167/" target="_blank" class="social-button facebook-button">
+                <img src="images/Facebook Image.jpg" alt="Facebook logo" class="social-image">
+            </a>
+            <a href="https://www.facebook.com/people/Bell-Road-Pharmacy/61580469364167/" target="_blank" class="social-button instagram-button">
+                <img src="images/InstagramLogo.jpg" alt="Instagram Logo" class="social-image">
+            </a>
+        </div>
+
+        <!-- Image Carousel -->
+        <section class="carousel-section">
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="carousel-slide active">
+                        <img src="images/IMG_5726.JPEG" alt="Pharmacy Interior" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/IMG_5727.JPEG" alt="Pharmacy Services" class="carousel-image">
+                        <div class="carousel-caption">
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/IMG_5728.JPEG" alt="Pharmacy Products" class="carousel-image">
+                    </div>
+                </div>
+                
+                <!-- Navigation Arrows -->
+                <button class="carousel-btn carousel-prev" aria-label="Previous image">&#8249;</button>
+                <button class="carousel-btn carousel-next" aria-label="Next image">&#8250;</button>
+                
+                <!-- Dots Indicator -->
+                <div class="carousel-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
+            </div>
+        </section>
 
     </main>
 
@@ -56,22 +94,17 @@
                 <div class="footer-section"> 
                     <img src="images/Logo_BellRoadPharmacy.png" alt="Pharmacy Logo" class="footer-image">
                     <h4>Bell Road Pharmacy</h4>
-                    <p>Filler Text Filler Text Filler Text Filler TextFiller Text</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">link1</a></li>
-                        <li><a href="#services">link2</a></li>
-                        <li><a href="#about">link3</a></li>
-                        <li><a href="#contact">link4</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Contact Info</h4>
-                    <p>Bell Road<br>
-                    (PHRAMACY ADDRESS)<br>
-                    (123)-456-7891</p>
+                    <p>Bell Road Pharmacy<br>
+                    4025 W. Bell Road, Suite 1A, Phoenix, AZ 85053<br>
+                    602-439-3366<br>
+                    Fax # : 602-795-7734<br>
+                    </p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -123,6 +156,48 @@
             
             lastScrollTop = scrollTop;
         });
+        
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        
+        function showSlide(index) {
+            // Remove active class from all slides and dots
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Add active class to current slide and dot
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+        
+        // Auto-advance carousel (optional)
+        setInterval(nextSlide, 5000); // Change slide every 5 seconds
     </script>
 </body>
 </html>
